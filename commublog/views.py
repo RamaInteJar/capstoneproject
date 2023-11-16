@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from commublog.models import Post, Comment
-from datetime import timezone
+from django.utils import timezone
 from django.shortcuts import render
 from commublog.models import Post, Comment
 from django.contrib.auth.decorators import login_required

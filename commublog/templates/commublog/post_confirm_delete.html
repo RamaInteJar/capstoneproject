@@ -1,0 +1,9 @@
+{% extends "commublog/base.html"%}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ post.title }}"?</p>
+    <button type="submit" class="btn btn-danger" value="confirm">Yes</button>
+    <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-default">Cancel</a>
+</form>
+{% endblock %}
