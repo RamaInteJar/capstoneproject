@@ -43,11 +43,13 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('post_list')
 
 class DraftListView(LoginRequiredMixin, ListView):
-    model = Post
+    login_url = '/login/'
     template_name = 'commublog/post_draft_list.html'
-    
+    model = Post
+
     def get_queryset(self):
-        return Post.objects.filter(published_date__isnull=True).order_by('create_date')
+        return Post.objects.filter(published_date__isnull=True).order_by('created_date')
+    
 
 @login_required
 def post_publish(request, pk):
