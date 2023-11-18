@@ -4,9 +4,9 @@
 {% for post in posts %}
     <div class="post">
         <p class="date">
-            Created: {{ post.created_date|date:'M d Y' }}
+            created: {{ post.created_date|date:'d-m-Y' }}
         </p>
-        <h2><a href="{% url 'commublog:post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
         <p>{{ post.text|truncatechars:200 }}</p>
     </div>
 {% endfor %}

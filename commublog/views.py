@@ -1,3 +1,4 @@
+from pyexpat.errors import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -29,13 +30,13 @@ class PostDetailView(DetailView):
 class CreatePostView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
-    template_name = 'commublog/post_detail.html'
+    template_name = 'commublog/post_form.html'
     login_url = '/login/'
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
-    template_name = 'commublog/post_detail.html'
+    redirect_field_name = 'commublog/post_detail.html'
     login_url = '/login/'
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
@@ -44,18 +45,27 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 
 class DraftListView(LoginRequiredMixin, ListView):
     login_url = '/login/'
-    template_name = 'commublog/post_draft_list.html'
+    redirect_field_name = 'commublog/post_draft_list.html'
     model = Post
 
     def get_queryset(self):
         return Post.objects.filter(published_date__isnull=True).order_by('created_date')
     
-
+##################################################
+##################################################
+##################################################
 @login_required
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post.publish()
-    return redirect('post_detail', pk=pk)
+
+    try:
+        post.publish()
+        messages.success(request, 'Post published successfully.')
+    except Exception as e:
+        # Handle any exceptions that may occur during publishing
+        messages.error(request, f'Error publishing post: {str(e)}')
+    return redirect('post_detail', pk=post.pk)
+
 
 @login_required
 def add_comment_to_post(request, pk):
