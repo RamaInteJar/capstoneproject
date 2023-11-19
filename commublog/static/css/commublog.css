@@ -1,3 +1,6 @@
+body{
+  background-color: #c5cae9;
+}
 .techfont{
   font-family: 'Russo One', sans-serif;
   font-size: 2.5rem;
@@ -5,11 +8,15 @@
 }
 .bigbrand{
  font-size:4rem; 
+ color: #50e462;
 }
-.navbar {
-  background-color: #eb6767;
-  border-color: #a71111;
+.navbar-nav {
+  background-color: #FFE900;
+  border-color: #FFE900;
+  border-radius: 10px;
+  margin: 5px;
 }
+
 .centerstage{
   margin-left: auto;
   margin-right: auto;
@@ -40,7 +47,7 @@
 /* COLOR CHANGING LOADER CSS BELOW */
 .loader {
   filter:hue-rotate(0deg);
-  color:linear-gradient(45deg,#0f8,#08f);
+  color:linear-gradient(45deg,rgb(141, 5, 75),rgb(0, 255, 72));
   animation:hue 10000ms infinite linear;
 }
 
