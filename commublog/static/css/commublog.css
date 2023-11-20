@@ -1,6 +1,9 @@
 body{
   background-color: #c5cae9;
 }
+.container{
+  background-color: #FFE900;
+}
 .techfont{
   font-family: 'Russo One', sans-serif;
   font-size: 2.5rem;
