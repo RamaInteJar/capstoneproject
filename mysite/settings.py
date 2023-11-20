@@ -24,6 +24,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'commublog/templates/commublog')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-tvs0p_j)16!0t3sini3bj#&a&nq3@ol)+fh1u@_r(^=&5g#)9s'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
